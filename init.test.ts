@@ -41,7 +41,7 @@ const EXPECTED_FILES = [
   "docs/harness/friction.md",
   "docs/harness/risk-profile.md",
   "docs/features/_template.md",
-  "docs/harness/workflows/onboard.md",
+  "docs/harness/workflows/light-onboard.md",
   "docs/harness/workflows/feature.md",
   "docs/harness/workflows/pillar.md",
   "docs/harness/workflows/review.md",
@@ -50,13 +50,13 @@ const EXPECTED_FILES = [
   "docs/harness/legibility.md",
   "docs/harness/merge-evidence.md",
   "docs/harness/examples/verify.md",
-  ".claude/commands/harness-onboard.md",
+  ".claude/commands/harness-light-onboard.md",
   ".claude/commands/feature.md",
   ".claude/commands/harness-pillar.md",
   ".claude/commands/harness-review.md",
   ".claude/commands/harness-probe.md",
   ".claude/commands/harness-upgrade.md",
-  ".agents/skills/harness-onboard/SKILL.md",
+  ".agents/skills/harness-light-onboard/SKILL.md",
   ".agents/skills/feature/SKILL.md",
   ".agents/skills/harness-pillar/SKILL.md",
   ".agents/skills/harness-review/SKILL.md",
@@ -151,24 +151,35 @@ describe("runInit", () => {
     // inline, not the current thin dispatch wrapper.
     const oldWrapper = "# Old onboarding workflow, inlined by kit 0.1.1\n";
     mkdirSync(join(dir, ".claude/commands"), { recursive: true });
-    writeFileSync(join(dir, ".claude/commands/harness-onboard.md"), oldWrapper);
+    writeFileSync(
+      join(dir, ".claude/commands/harness-light-onboard.md"),
+      oldWrapper,
+    );
     const report = runInit(dir);
     expect(
-      readFileSync(join(dir, ".claude/commands/harness-onboard.md"), "utf8"),
+      readFileSync(
+        join(dir, ".claude/commands/harness-light-onboard.md"),
+        "utf8",
+      ),
     ).toBe(oldWrapper);
-    expect(report.skipped).toContain(".claude/commands/harness-onboard.md");
+    expect(report.skipped).toContain(
+      ".claude/commands/harness-light-onboard.md",
+    );
     expect(report.references).toContain(
-      ".claude/commands/harness-onboard.md.harness-kit",
+      ".claude/commands/harness-light-onboard.md.harness-kit",
     );
     // The reference is the current template wrapper, ready to swap in.
     expect(
       readFileSync(
-        join(dir, ".claude/commands/harness-onboard.md.harness-kit"),
+        join(dir, ".claude/commands/harness-light-onboard.md.harness-kit"),
         "utf8",
       ),
     ).toBe(
       readFileSync(
-        join(import.meta.dir, "template/.claude/commands/harness-onboard.md"),
+        join(
+          import.meta.dir,
+          "template/.claude/commands/harness-light-onboard.md",
+        ),
         "utf8",
       ),
     );
@@ -183,14 +194,16 @@ describe("runInit", () => {
     const second = runInit(dir);
     expect(second.references).toEqual([]);
     expect(
-      existsSync(join(dir, ".claude/commands/harness-onboard.md.harness-kit")),
+      existsSync(
+        join(dir, ".claude/commands/harness-light-onboard.md.harness-kit"),
+      ),
     ).toBe(false);
   });
 
   test("changed workflow body is untouched and gets a merge reference", () => {
     const dir = scratch();
     runInit(dir);
-    const workflow = join(dir, "docs/harness/workflows/onboard.md");
+    const workflow = join(dir, "docs/harness/workflows/light-onboard.md");
     const adapted = "# Repo-specific onboarding\n";
     writeFileSync(workflow, adapted);
 
@@ -198,7 +211,7 @@ describe("runInit", () => {
 
     expect(readFileSync(workflow, "utf8")).toBe(adapted);
     expect(report.references).toContain(
-      "docs/harness/workflows/onboard.md.harness-kit",
+      "docs/harness/workflows/light-onboard.md.harness-kit",
     );
     expect(existsSync(`${workflow}.harness-kit`)).toBe(true);
   });

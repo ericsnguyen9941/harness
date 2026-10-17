@@ -22,6 +22,10 @@ For each, by kind:
 
 Delete each reference once merged. `find` must come back empty before you finish.
 
+## Retired kit files
+
+`init` never deletes, so a file the kit stopped shipping stays in the repo with no reference beside it. The changelog span names every retired file and its replacement. Delete the retired file; if it carries repo-specific guidance, move that into its replacement first (confirm with the human). A retired workflow left behind keeps a second, outdated entry point alive.
+
 ## Close
 
 - Run `verify`. Include its output.

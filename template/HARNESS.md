@@ -17,7 +17,7 @@ Kit version: see `docs/harness/kit-version`; update by re-running the kit's `ini
 
 ## The seven pillars
 
-The harness is assessed along seven pillars. Onboarding co-builds a **thin default layer** for each — the thinnest version that actually works or is honestly stubbed — with the human in the loop. Thickening a pillar later is `/harness-pillar`'s job, escalated only when the friction log shows the thin layer is not enough.
+The harness is assessed along seven pillars. Onboarding builds a **thin default layer** for each — the thinnest version that actually works or is honestly stubbed — asking the human only what they alone can decide and confirming the rest on one decision sheet. Thickening a pillar later is `/harness-pillar`'s job, escalated only when the friction log shows the thin layer is not enough.
 
 | Pillar | What it is | Thin default layer | Credible when |
 | --- | --- | --- | --- |
@@ -26,7 +26,7 @@ The harness is assessed along seven pillars. Onboarding co-builds a **thin defau
 | Runtime legibility | The running system can be observed and reproduced | `docs/harness/legibility.md` filled: where logs go, what state matters, how to reproduce a bug, one failure walked through | A developer can reproduce one representative failure and identify the evidence needed to explain it without exposing secrets or sensitive data. |
 | Entropy control | Docs and rules stay lean; cruft is deleted | Friction log with budgets + "docs earn their existence, deleted when premature" + a periodic `/harness-review` (sweep → pattern pass → distil/archive → prune) | Review cadence and owner are named; open friction, live-log size, over-budget feature docs, and dangling reading-map lines are counted by the recipe in the review workflow. |
 | Merge philosophy | How a change earns its way in | Branch-per-task, the evidence block from `docs/harness/merge-evidence.md` on every merge, DoD stands in until CI exists | The actual merge path names required evidence and does not rely on a process the team will not follow. |
-| Human role | Where human judgment is mandatory | Hard gates (generic four + domain gates from the interview) | Each irreversible, externally binding, money-moving, privacy, security, or compliance boundary has a recognizable stop condition and decision owner. |
+| Human role | Where human judgment is mandatory | Hard gates (generic four + domain gates from the onboarding decision sheet) | Each irreversible, externally binding, money-moving, privacy, security, or compliance boundary has a recognizable stop condition and decision owner. |
 | Feedback loop | The harness learns from its own friction | Friction log with prediction → outcome; `/harness-review` closes open entries, promotes repeated themes to rules, and archives closed entries on a cadence; `/harness-probe` measures the open bets; kit-template friction ports upstream | A prediction can be traced to an observed outcome, repeated friction has a defined escalation path, and every archived entry names the rule that now holds its learning. |
 
 A pillar left thin is not a gap to hide — its thin state and the path to thicken it are recorded at onboarding. Thickening is co-built, never auto-generated.
@@ -41,7 +41,7 @@ A pillar left thin is not a gap to hide — its thin state and the path to thick
 | Cross-tool bridge | `CLAUDE.md` → `AGENTS.md` (symlink/shim) | installed by init so Claude Code reads the manual |
 | Workflow entry points per tool | `.claude/commands/<name>.md` (Claude Code `/name`), `.agents/skills/<name>/SKILL.md` (Codex `$name`) | installed; thin dispatch shims over the workflow bodies below |
 | Task→reading map + stop rule | `AGENTS.md` | TODO(harness): entries filled at onboarding |
-| Hard gates | `AGENTS.md` | generic four installed; domain gates from the onboarding interview |
+| Hard gates | `AGENTS.md` | generic four installed; domain gates inferred at onboarding and confirmed by the human |
 | Definition of done + self-check | `AGENTS.md` | TODO(harness): commands wired at onboarding |
 | Merge philosophy | `AGENTS.md` | installed |
 | Feature docs (invariants, verify-as-command) | `docs/features/_template.md` | installed |
@@ -53,10 +53,10 @@ A pillar left thin is not a gap to hide — its thin state and the path to thick
 | Design records | `docs/plans/` | convention installed |
 | Friction log (prediction → outcome, archive of distilled entries) | `docs/harness/friction.md` | installed |
 | Risk profile + non-negotiable baselines | `docs/harness/risk-profile.md` | TODO(harness): classified and confirmed at onboarding |
-| Definition-of-done runner (thin enforcement) | a `verify` entry point; shape in `docs/harness/examples/verify.md` | TODO(harness): wired at onboarding (Stage B, pillar 3) |
+| Definition-of-done runner (thin enforcement) | a `verify` entry point; shape in `docs/harness/examples/verify.md` | TODO(harness): wired at onboarding |
 | Mechanical enforcement (CI, lint, architecture rules) | hook and CI shapes in `docs/harness/examples/verify.md` | thin layer at onboarding; thicken via `/harness-pillar` |
-| Runtime legibility (logs, state, reproduction, one failure) | `docs/harness/legibility.md` | TODO(harness): filled at onboarding (Stage B, pillar 4); thicken via `/harness-pillar` |
-| Merge evidence block | `docs/harness/merge-evidence.md` | installed; forge adapter (PR template) copied at onboarding (Stage B, pillar 6) |
+| Runtime legibility (logs, state, reproduction, one failure) | `docs/harness/legibility.md` | TODO(harness): filled at onboarding; thicken via `/harness-pillar` |
+| Merge evidence block | `docs/harness/merge-evidence.md` | installed; forge adapter (PR template) copied at onboarding |
 
 ## Open bets
 

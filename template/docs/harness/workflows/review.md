@@ -53,7 +53,7 @@ End with the three self-check answers: did this pass make any doc stale (fix it 
 
 ---
 
-## Budgets (defaults — adjusted at onboarding, B5)
+## Budgets (defaults — kept at onboarding unless the human changes them)
 
 | What | Budget | Why |
 | --- | --- | --- |

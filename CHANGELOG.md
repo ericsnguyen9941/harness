@@ -2,6 +2,15 @@
 
 Read this when `/harness-upgrade` has references to merge: find the span between the repo's previous `docs/harness/kit-version` and the current one, and merge *these* intents. Every change to `template/` adds an entry here in the same commit (kit convention).
 
+## 0.9.0 — 2026-10-17
+
+- Onboarding renamed and lightened: `docs/harness/workflows/light-onboard.md`, `/harness-light-onboard` (`.claude/commands/harness-light-onboard.md`), `$harness-light-onboard` (`.agents/skills/harness-light-onboard/SKILL.md`). It asks only what the human alone knows plus choices expensive to reverse, decides the rest as tagged defaults, and confirms everything on one decision sheet (three to five turns). Risk posture and gates are inferred but always shown; scope ceiling, facts-only, and risk prerequisites are unchanged. A re-run reads the newest pillars plan and asks only about changes. The pillars plan gains a "Decided by default" list.
+- Retired: `docs/harness/workflows/onboard.md`, `.claude/commands/harness-onboard.md`, `.agents/skills/harness-onboard/SKILL.md`. Delete them on upgrade; move any repo-specific guidance from the old body into `light-onboard.md` first.
+- Upgrade workflow: new "Retired kit files" step.
+- `AGENTS.md` workflow line points at `light-onboard.md`; domain-gates slot says "inferred at onboarding, confirmed on its decision sheet".
+- `HARNESS.md`: pillar intro and mechanism rows drop the Stage B step numbers and the interview wording.
+- Review workflow: budgets heading no longer cites onboarding step B5.
+
 ## 0.8.0 — 2026-10-08
 
 - New `.agents/skills/<name>/SKILL.md` for all six workflows: Codex entry points (`$harness-onboard`, `$feature`, `$harness-pillar`, `$harness-review`, `$harness-probe`, `$harness-upgrade`), same names as the Claude Code commands, same one-line dispatch to `docs/harness/workflows/<name>.md`. Treat them like `.claude/commands/*.md` on upgrade: kit-owned shims, replace with the reference.

@@ -145,7 +145,7 @@ describe("runOnboard end to end", () => {
     expect(existsSync(join(target, "HARNESS.md"))).toBe(true);
     expect(existsSync(join(target, "docs/harness/kit-version"))).toBe(true);
     expect(
-      existsSync(join(target, ".claude/commands/harness-onboard.md")),
+      existsSync(join(target, ".claude/commands/harness-light-onboard.md")),
     ).toBe(true);
   });
 });

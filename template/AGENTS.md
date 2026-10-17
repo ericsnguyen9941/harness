@@ -20,7 +20,7 @@ Stop reading when you can name the files you will change and the command that pr
 
 Repeatable procedures live as workflow docs any agent can follow. Each has a thin per-tool entry point under the same name: a Claude Code slash command (`/name`, in `.claude/commands/`) and a Codex skill (`$name`, in `.agents/skills/`). Any other tool: ask it to read the workflow file and follow it.
 
-- Onboard this repo onto the harness → `docs/harness/workflows/onboard.md` (`/harness-onboard`)
+- Onboard this repo onto the harness → `docs/harness/workflows/light-onboard.md` (`/harness-light-onboard`)
 - Start a feature → `docs/harness/workflows/feature.md` (`/feature`)
 - Thicken one harness pillar → `docs/harness/workflows/pillar.md` (`/harness-pillar`)
 - Maintain the harness (friction sweep, pattern pass, distil/archive, docs prune) → `docs/harness/workflows/review.md` (`/harness-review`)
@@ -43,7 +43,7 @@ Stop and confirm with the human before:
 - changing auth, session, or credential behavior;
 - weakening validation, lint rules, tests, or the definition of done;
 - deleting user data;
-- TODO(harness): domain gates — what else is irreversible or externally binding here (filled from the onboarding interview).
+- TODO(harness): domain gates — what else is irreversible or externally binding here (inferred at onboarding, confirmed on its decision sheet).
 
 Crossing a gate requires a decision record in `docs/plans/`.
 Bypassing a gate that should have stopped you is harness friction — log it.

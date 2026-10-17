@@ -5,7 +5,7 @@ Onboard any repository onto an agent-development harness: the repo patterns prov
 The kit splits onboarding along the judgment line:
 
 - **`init.ts` (deterministic)** copies the skeleton — never overwrites, stamps a version, and tells you the one next step.
-- **`/harness-onboard` (agent, judgment)** is a working session, not a form-fill: it discusses the repo's basics with you (purpose, stack, architecture), then walks all seven pillars and **co-builds a thin default layer** for each — verified commands, domain gates, a reading map pointing only at docs that exist, and a runnable definition of done. Thickening a pillar later is `/harness-pillar`'s job. Onboarding is slow on purpose.
+- **`/harness-light-onboard` (agent, judgment)** asks you only what you alone know — what the project is for, who uses it, what is already decided, and the few choices that are expensive to reverse — then decides everything else as recorded defaults and shows them, with the inferred risk posture and gates, on one decision sheet you correct once. It then builds a **thin default layer** for all seven pillars — verified commands, domain gates, a reading map pointing only at docs that exist, and a runnable definition of done. Three to five turns of your time. Thickening a pillar later is `/harness-pillar`'s job.
 
 ## Install & onboard — one command
 
@@ -15,7 +15,7 @@ Requirements on any machine: `bun` and `git`. Then, from anywhere:
 curl -fsSL https://raw.githubusercontent.com/nguyenngocanh94/harness/main/onboard.ts | bun - /path/to/target-repo
 ```
 
-The first run clones the kit into `~/.cache/harness-kit`; later runs reset it to the published head, so every machine installs the latest kit automatically (offline falls back to the cached copy with a staleness warning). When it finishes, open the target repo in your agent tool and run the onboarding workflow (`/harness-onboard` in Claude Code; other tools read the same body from `docs/harness/workflows/onboard.md`) — the skeleton is installed, the adaptation happens there.
+The first run clones the kit into `~/.cache/harness-kit`; later runs reset it to the published head, so every machine installs the latest kit automatically (offline falls back to the cached copy with a staleness warning). When it finishes, open the target repo in your agent tool and run the onboarding workflow (`/harness-light-onboard` in Claude Code, `$harness-light-onboard` in Codex; other tools read the same body from `docs/harness/workflows/light-onboard.md`) — the skeleton is installed, the adaptation happens there.
 
 Convenience alias for your dotfiles:
 
@@ -49,9 +49,9 @@ Overrides: `--repo=<git-url>` or `HARNESS_KIT_REPO` (fork/mirror), `--ref=<branc
 | `docs/harness/legibility.md` | runtime-legibility skeleton — logs, state, reproduction, one walked-through failure |
 | `docs/harness/merge-evidence.md` | the evidence block every merge carries, plus per-forge adapters |
 | `docs/harness/examples/verify.md` | the `verify` entry point by stack, a warning hook, a minimal CI job — examples, not mechanisms |
-| `docs/harness/workflows/{onboard,feature,pillar,review,probe,upgrade}.md` | tool-neutral workflow bodies — the single source any agent follows |
-| `.claude/commands/{harness-onboard,feature,harness-pillar,harness-review,harness-probe,harness-upgrade}.md` | thin Claude Code entry points that delegate to the workflow bodies |
-| `.agents/skills/{harness-onboard,feature,harness-pillar,harness-review,harness-probe,harness-upgrade}/SKILL.md` | thin Codex skill entry points (`$harness-onboard`, …) that delegate to the same workflow bodies |
+| `docs/harness/workflows/{light-onboard,feature,pillar,review,probe,upgrade}.md` | tool-neutral workflow bodies — the single source any agent follows |
+| `.claude/commands/{harness-light-onboard,feature,harness-pillar,harness-review,harness-probe,harness-upgrade}.md` | thin Claude Code entry points that delegate to the workflow bodies |
+| `.agents/skills/{harness-light-onboard,feature,harness-pillar,harness-review,harness-probe,harness-upgrade}/SKILL.md` | thin Codex skill entry points (`$harness-light-onboard`, …) that delegate to the same workflow bodies |
 | `docs/harness/kit-version` | stamp for update tracking (the only file init ever rewrites) |
 
 If any template file already exists, init leaves it untouched and drops a `<name>.harness-kit` reference copy next to it when the published template differs. The upgrade workflow (`/harness-upgrade`) walks those references: manuals and workflow bodies are merged, `.claude/commands/*.md` and `.agents/skills/*/SKILL.md` wrappers are *replaced* (kit-owned dispatch shims — an old-kit wrapper can shadow the current workflow body), logs and templates take the structural change only. A repo onboarded by an older kit (a real `CLAUDE.md`, no `AGENTS.md`) is detected as a migration: init leaves `CLAUDE.md` alone, drops `AGENTS.md.harness-kit`, and the upgrade workflow moves the content into `AGENTS.md` and installs the bridge.
