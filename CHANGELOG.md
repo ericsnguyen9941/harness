@@ -2,6 +2,13 @@
 
 Read this when `/harness-upgrade` has references to merge: find the span between the repo's previous `docs/harness/kit-version` and the current one, and merge *these* intents. Every change to `template/` adds an entry here in the same commit (kit convention).
 
+## 0.11.0 — 2026-10-27
+
+- Feature workflow accepts an authorised delegated brief as completed product intake, checks feasibility in scoped inspect, batches independent reads and stops exploration when the implementation path and verification are known. Contradictions return to the decision owner.
+- Task learning compares token buckets, model calls and recorded timing lanes alongside acceptance quality and rework. Missing/stale metrics remain unknown; overlapping time lanes are never summed. Integrators route prediction links into the next relevant brief.
+- Merge evidence records the bounded efficiency observation and its scope; `none` stays valid and no new telemetry service or full transcript audit is required.
+- No files retired and no validation or authority gates weakened.
+
 ## 0.10.0 — 2026-10-27
 
 - New `docs/harness/workflows/learn.md` with `/harness-learn` and `$harness-learn` entry points: bounded evidence capture before every task handoff, missing-result catch-up after merge/local closure, source-based deduplication, destination/owner routing, and checking predictions on later relevant tasks. `none` is a valid result; no compulsory rule edit or full transcript audit.

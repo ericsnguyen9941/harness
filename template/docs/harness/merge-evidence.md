@@ -25,6 +25,7 @@
 
 **Learning** — <none | captured | follow-up> — <task/PR and revision>
 <up to three finding → destination / owner / next-check lines, or omit when none>
+**Efficiency observation** — <bounded usage/timing source and scope, or unknown>; <prediction outcome with quality evidence, or not yet tested>
 ```
 
 Fill the learning result through `docs/harness/workflows/learn.md`. The implementer records it before handoff; the integrator catches up only if it is missing or new evidence arrived. Its presence records the check, not proof that a proposed harness change worked.
