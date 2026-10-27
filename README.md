@@ -49,9 +49,9 @@ Overrides: `--repo=<git-url>` or `HARNESS_KIT_REPO` (fork/mirror), `--ref=<branc
 | `docs/harness/legibility.md` | runtime-legibility skeleton — logs, state, reproduction, one walked-through failure |
 | `docs/harness/merge-evidence.md` | the evidence block every merge carries, plus per-forge adapters |
 | `docs/harness/examples/verify.md` | the `verify` entry point by stack, a warning hook, a minimal CI job — examples, not mechanisms |
-| `docs/harness/workflows/{light-onboard,feature,pillar,review,probe,upgrade}.md` | tool-neutral workflow bodies — the single source any agent follows |
-| `.claude/commands/{harness-light-onboard,feature,harness-pillar,harness-review,harness-probe,harness-upgrade}.md` | thin Claude Code entry points that delegate to the workflow bodies |
-| `.agents/skills/{harness-light-onboard,feature,harness-pillar,harness-review,harness-probe,harness-upgrade}/SKILL.md` | thin Codex skill entry points (`$harness-light-onboard`, …) that delegate to the same workflow bodies |
+| `docs/harness/workflows/{light-onboard,feature,pillar,learn,review,probe,upgrade}.md` | tool-neutral workflow bodies — the single source any agent follows |
+| `.claude/commands/{harness-light-onboard,feature,harness-pillar,harness-learn,harness-review,harness-probe,harness-upgrade}.md` | thin Claude Code entry points that delegate to the workflow bodies |
+| `.agents/skills/{harness-light-onboard,feature,harness-pillar,harness-learn,harness-review,harness-probe,harness-upgrade}/SKILL.md` | thin Codex skill entry points (`$harness-light-onboard`, …) that delegate to the same workflow bodies |
 | `docs/harness/kit-version` | stamp for update tracking (the only file init ever rewrites) |
 
 If any template file already exists, init leaves it untouched and drops a `<name>.harness-kit` reference copy next to it when the published template differs. The upgrade workflow (`/harness-upgrade`) walks those references: manuals and workflow bodies are merged, `.claude/commands/*.md` and `.agents/skills/*/SKILL.md` wrappers are *replaced* (kit-owned dispatch shims — an old-kit wrapper can shadow the current workflow body), logs and templates take the structural change only. A repo onboarded by an older kit (a real `CLAUDE.md`, no `AGENTS.md`) is detected as a migration: init leaves `CLAUDE.md` alone, drops `AGENTS.md.harness-kit`, and the upgrade workflow moves the content into `AGENTS.md` and installs the bridge.
@@ -61,6 +61,10 @@ If any template file already exists, init leaves it untouched and drops a `<name
 Re-run `init.ts` — it copies files added by newer kit versions, creates references for every changed template file, refreshes the stamp, and never overwrites adapted content. Then run `/harness-upgrade` in the repo; `CHANGELOG.md` here lists what moved between any two versions. Template changes always bump `VERSION` and add a changelog entry.
 
 ## The feedback loop
+
+Every task runs a bounded `/harness-learn` check before handoff, including blocked or abandoned work. It uses the existing handoff/review/usage evidence, allows `none`, routes findings to the relevant doc or friction log, and gives remaining work an owner. The integrator catches up after merge or local closure only when the result is missing or new evidence arrived; later relevant tasks check predictions. Periodic `/harness-review` still owns pattern promotion and archiving.
+
+Onboarding and upgrade name the integrator and the existing place the result lives. The kit ships instructions and entry points, not an automatic merge watcher: an external orchestrator must connect its own handoff/closure path. No full transcript audit or mandatory rule edit on each merge.
 
 Every onboarded repo keeps its own friction log. Entries about the kit's templates (not the repo's domain) get ported back to this repo's `docs/harness/friction.md` with the usual prediction→outcome discipline. Learnings flow: repos → kit → all future onboardings.
 

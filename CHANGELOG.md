@@ -2,6 +2,21 @@
 
 Read this when `/harness-upgrade` has references to merge: find the span between the repo's previous `docs/harness/kit-version` and the current one, and merge *these* intents. Every change to `template/` adds an entry here in the same commit (kit convention).
 
+## 0.11.0 — 2026-10-27
+
+- Feature workflow accepts an authorised delegated brief as completed product intake, checks feasibility in scoped inspect, batches independent reads and stops exploration when the implementation path and verification are known. Contradictions return to the decision owner.
+- Task learning compares token buckets, model calls and recorded timing lanes alongside acceptance quality and rework. Missing/stale metrics remain unknown; overlapping time lanes are never summed. Integrators route prediction links into the next relevant brief.
+- Merge evidence records the bounded efficiency observation and its scope; `none` stays valid and no new telemetry service or full transcript audit is required.
+- No files retired and no validation or authority gates weakened.
+
+## 0.10.0 — 2026-10-27
+
+- New `docs/harness/workflows/learn.md` with `/harness-learn` and `$harness-learn` entry points: bounded evidence capture before every task handoff, missing-result catch-up after merge/local closure, source-based deduplication, destination/owner routing, and checking predictions on later relevant tasks. `none` is a valid result; no compulsory rule edit or full transcript audit.
+- `AGENTS.md`, feature workflow and merge evidence now route through task learning. Onboarding names the integrator and result location. `HARNESS.md` and probe count delivery and later observation of lessons, including inspect-code calls/tokens when available and quality/rework alongside them.
+- Upgrade must merge the learning trigger and evidence field into adapted manuals and forge/handoff templates, preserving historical friction entries. External orchestrators need their own integration; no watcher or post-merge automation is installed by the kit.
+- Periodic review retains its cadence and human decision boundaries. Its optional merge-hook section is now explicitly about maintenance reminders, separate from default task learning. Friction entries identify source task/revision in the existing `Friction` field.
+- No files retired; installer never-overwrite behavior and validation gates are unchanged.
+
 ## 0.9.0 — 2026-10-17
 
 - Onboarding renamed and lightened: `docs/harness/workflows/light-onboard.md`, `/harness-light-onboard` (`.claude/commands/harness-light-onboard.md`), `$harness-light-onboard` (`.agents/skills/harness-light-onboard/SKILL.md`). It asks only what the human alone knows plus choices expensive to reverse, decides the rest as tagged defaults, and confirms everything on one decision sheet (three to five turns). Risk posture and gates are inferred but always shown; scope ceiling, facts-only, and risk prerequisites are unchanged. A re-run reads the newest pillars plan and asks only about changes. The pillars plan gains a "Decided by default" list.

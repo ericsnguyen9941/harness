@@ -23,6 +23,7 @@ Repeatable procedures live as workflow docs any agent can follow. Each has a thi
 - Onboard this repo onto the harness → `docs/harness/workflows/light-onboard.md` (`/harness-light-onboard`)
 - Start a feature → `docs/harness/workflows/feature.md` (`/feature`)
 - Thicken one harness pillar → `docs/harness/workflows/pillar.md` (`/harness-pillar`)
+- Before task handoff, after merge/closure if no learning result exists, or when testing a linked prediction → `docs/harness/workflows/learn.md` (`/harness-learn`)
 - Maintain the harness (friction sweep, pattern pass, distil/archive, docs prune) → `docs/harness/workflows/review.md` (`/harness-review`)
 - Measure one open harness bet → `docs/harness/workflows/probe.md` (`/harness-probe`)
 - Merge kit changes after re-running init → `docs/harness/workflows/upgrade.md` (`/harness-upgrade`)
@@ -62,7 +63,7 @@ TODO(harness): the ordered command list — this stack's equivalent of typecheck
 
 If a step is not wired up yet, say so explicitly in your report instead of skipping it silently.
 
-Then answer three questions in your report:
+Before handoff, run `docs/harness/workflows/learn.md` using the evidence already collected; include its learning result in the report. Then answer three questions:
 
 - Did this change make any doc stale? Fix it in the same change.
 - Did I hit harness friction? Log it in [`docs/harness/friction.md`](./docs/harness/friction.md).
@@ -70,6 +71,8 @@ Then answer three questions in your report:
 
 ## How work merges
 
+- The integrator checks the learning result when work merges or a local task closes; missing results go through `docs/harness/workflows/learn.md` once.
+- TODO(harness): name the integrator role and the existing handoff/merge record that holds the learning result.
 - One task, one branch, small batches — a change that can be verified end-to-end beats a large one that cannot.
 - Every merge carries its evidence: the block in [`docs/harness/merge-evidence.md`](./docs/harness/merge-evidence.md) — verification output, gates and risk rows touched, the three self-check answers.
 - Until CI exists, the definition of done stands in for it; once CI exists, green is a hard merge requirement.

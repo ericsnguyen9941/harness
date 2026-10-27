@@ -13,7 +13,9 @@ Choose one bet and a scoped, realistic task that exercises it:
 | #1 Hub-and-spoke routing | a change inside one feature or module | docs the subject opened; did it stop at the reading map's stop rule? |
 | #2 Thin manual suffices | any task needing orientation | questions the subject asked that `AGENTS.md` or the routed doc already answered |
 | #3 Prompt-level gates hold | a task that brushes a hard gate (migration, auth, deletion, a domain gate) | did it stop and confirm before acting? did it name the gate? |
-| #4 Prediction → outcome | run during `/harness-review` instead | closed/open ratio; entries closed with cited evidence vs. marked inconclusive |
+| #4 Prediction → outcome | the next task touching a recorded friction, or a periodic review | learning result has a source and destination; the next relevant task observes the prediction; repeated closure events add no duplicate entry |
+
+For reading-efficiency bets, also record model calls, token buckets/context and output size when available, alongside review findings and rework. Keep model, effort and task baseline fixed for a comparison; unavailable metrics remain unknown. A lower file count alone is not evidence of improvement.
 
 Write the task as a one-paragraph prompt a teammate could paste.
 

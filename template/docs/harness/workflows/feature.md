@@ -7,6 +7,9 @@ If the user gave a short feature description, treat it as the opening request.
 
 ## Step 1 — Understand what the human wants (the intake)
 
+For delegated work, first read the authorised task brief. If it already settles observable behaviour, in/out scope, preserved behaviour and acceptance, use it as the intake result and continue to Step 2. File/symbol/test locations are implementation unknowns, not reasons to repeat product intake. Existing decisions and recorded approvals remain authoritative; a new gate or contradiction goes to the named decision owner (the orchestrator for a managed worker), never to an invented assumption.
+
+
 If a feature description was given, restate it in one sentence and confirm you have it right. Otherwise ask what they want to build.
 
 Then draw out scope with focused questions, **one at a time**, building on each answer — never a form dumped all at once. Ask only as many as you need to fill a feature doc honestly:
@@ -20,7 +23,7 @@ Stop asking the moment you can name the files you will change and the command th
 
 ## Step 2 — Orient in the repo
 
-Read `AGENTS.md`'s "What to read for a task" and load **only** the doc it routes you to. Confirm the entry-point files you'll change and the proof command. Don't read the whole tree.
+Read the brief's known paths and `AGENTS.md`'s reading map, then the relevant area doc. Inspect to answer a concrete implementation question: scoped symbol/path search, then relevant file ranges. Batch independent reads in one tool round; follow dependent results in the next. Stop when the affected path, existing pattern and verification are clear; expand only for an unresolved dependency. Validate second-hand facts. If the code makes acceptance unreachable or requires different product scope, report evidence and the smallest alternatives to the decision owner before implementing a different contract.
 
 ## Step 3 — Gate check (stop here if it applies)
 
@@ -54,5 +57,7 @@ Follow the repo's Conventions and whatever development discipline `AGENTS.md` (a
 Run `AGENTS.md`'s Verification list in order, plus the feature doc's "How to verify". Execute the commands and include their real output — do not paraphrase. If a step isn't wired up in this repo, say so explicitly instead of skipping it silently.
 
 ## Step 7 — Merge with evidence
+
+Run `docs/harness/workflows/learn.md` before handoff; include the learning result in the evidence block. The integrator checks for a missing result after merge.
 
 Every merge carries its evidence: the verification output and the three self-check answers from `AGENTS.md` — did this change make any doc stale (fix it here); did I hit harness friction (log it in `docs/harness/friction.md`); what did I not attempt (say so).

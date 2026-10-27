@@ -26,6 +26,12 @@ Delete each reference once merged. `find` must come back empty before you finish
 
 `init` never deletes, so a file the kit stopped shipping stays in the repo with no reference beside it. The changelog span names every retired file and its replacement. Delete the retired file; if it carries repo-specific guidance, move that into its replacement first (confirm with the human). A retired workflow left behind keeps a second, outdated entry point alive.
 
+## Connect task learning
+
+When upgrading to the task-learning workflow, merge its trigger into `AGENTS.md` and the existing handoff/PR evidence template; installing the new workflow file alone is insufficient. Name the integrator role and result location using the current delivery process. Preserve existing friction entries; source references are required for new entries, not a reason to rewrite history.
+
+If an external orchestrator owns task closure, record the missing integration and its owner; the kit cannot install that service's event handler. Keep the implementer's pre-handoff check active meanwhile. Do not claim post-merge automation is installed merely because the docs and wrappers exist.
+
 ## Close
 
 - Run `verify`. Include its output.

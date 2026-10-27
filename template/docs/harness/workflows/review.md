@@ -86,7 +86,9 @@ grep -oE '(^|[^A-Za-z0-9_./-])docs/[A-Za-z0-9_./-]+\.md' AGENTS.md |
   while read -r p; do [ -e "$p" ] || echo "dangling: $p"; done
 ```
 
-## Wiring it after a merge (thickening — opt-in, not installed)
+## Wiring periodic review reminders (thickening — opt-in, not installed)
+
+Per-task learning is the default in `docs/harness/workflows/learn.md`; it captures evidence without running this full review on every merge. The adapters below remind the integrator about periodic maintenance, not about inventing a new rule for each task.
 
 Escalate to a mechanical trigger only when friction shows the manual cadence is being skipped. When you do, keep the core tool-neutral and add a per-environment adapter:
 

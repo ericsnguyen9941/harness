@@ -27,7 +27,7 @@ The harness is assessed along seven pillars. Onboarding builds a **thin default 
 | Entropy control | Docs and rules stay lean; cruft is deleted | Friction log with budgets + "docs earn their existence, deleted when premature" + a periodic `/harness-review` (sweep → pattern pass → distil/archive → prune) | Review cadence and owner are named; open friction, live-log size, over-budget feature docs, and dangling reading-map lines are counted by the recipe in the review workflow. |
 | Merge philosophy | How a change earns its way in | Branch-per-task, the evidence block from `docs/harness/merge-evidence.md` on every merge, DoD stands in until CI exists | The actual merge path names required evidence and does not rely on a process the team will not follow. |
 | Human role | Where human judgment is mandatory | Hard gates (generic four + domain gates from the onboarding decision sheet) | Each irreversible, externally binding, money-moving, privacy, security, or compliance boundary has a recognizable stop condition and decision owner. |
-| Feedback loop | The harness learns from its own friction | Friction log with prediction → outcome; `/harness-review` closes open entries, promotes repeated themes to rules, and archives closed entries on a cadence; `/harness-probe` measures the open bets; kit-template friction ports upstream | A prediction can be traced to an observed outcome, repeated friction has a defined escalation path, and every archived entry names the rule that now holds its learning. |
+| Feedback loop | The harness learns from its own friction | `docs/harness/workflows/learn.md` at handoff, integrator catch-up after merge/closure, and friction log with prediction→outcome; `/harness-review` closes open entries, promotes repeated themes to rules, and archives closed entries on a cadence; `/harness-probe` measures the open bets; kit-template friction ports upstream | A prediction can be traced to an observed outcome, repeated friction has a defined escalation path, and every archived entry names the rule that now holds its learning. |
 
 A pillar left thin is not a gap to hide — its thin state and the path to thicken it are recorded at onboarding. Thickening is co-built, never auto-generated.
 
@@ -47,6 +47,7 @@ A pillar left thin is not a gap to hide — its thin state and the path to thick
 | Feature docs (invariants, verify-as-command) | `docs/features/_template.md` | installed |
 | Feature-start workflow (intake → gate check → doc → done) | `docs/harness/workflows/feature.md` | installed; optional to use |
 | Pillar thickening workflow | `docs/harness/workflows/pillar.md` | installed; run when a thin layer needs to grow |
+| Task learning | `docs/harness/workflows/learn.md` | default before handoff; integrator checks missing merge/closure results; external event adapters need wiring |
 | Maintenance workflow (friction sweep → pattern pass → distil/archive → docs prune) | `docs/harness/workflows/review.md` | installed; run per release or when a budget in the review workflow is crossed |
 | Probe workflow (measure one open bet) | `docs/harness/workflows/probe.md` | installed; run before the second release, then whenever a release passes with no bet gaining evidence |
 | Upgrade workflow (merge `*.harness-kit` references after re-running init) | `docs/harness/workflows/upgrade.md` | installed; run whenever init reports a `ref` line |
@@ -69,7 +70,7 @@ Each bet names its measurement; evidence accumulates in the friction log and clo
 3. **Prompt-level gates hold** — agents stop at hard gates without mechanical enforcement.
    Measure: gate bypasses recorded as friction (target: zero; any bypass escalates that gate to a hook or CI rule).
 4. **Prediction→outcome keeps harness edits honest** — changes carrying predictions get evaluated instead of accumulating on faith.
-   Measure: ratio of closed to open friction entries at each milestone.
+   Measure: task learning results with evidence and destinations; predictions observed by later relevant tasks; duplicate entries from repeated closure events (target zero); closed/open ratio at milestones.
 
 ## How to run a probe
 
