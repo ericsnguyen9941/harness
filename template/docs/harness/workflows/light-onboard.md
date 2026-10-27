@@ -54,7 +54,7 @@ Draft each item and tag it `asked` (from the human), `inferred` (derived from th
 3. **Verify.** One entry point (shapes in `docs/harness/examples/verify.md`), typecheck → lint → test, runnable headless; note its expected runtime.
 4. **Risk posture.** Classify from the purpose through the exposures in `docs/harness/risk-profile.md`: sensitive data; multi-user isolation; money, external, or destructive effects; existing obligations; blast radius. Name the non-negotiable baselines.
 5. **Domain gates.** Derived from the exposures, each phrased as a stop-and-confirm trigger an agent can recognize.
-6. **Plain defaults.** Reading map; legibility (existing repo: from the code; greenfield: the open questions); review budgets as shipped in `docs/harness/workflows/review.md`; merge path as in `AGENTS.md`, with the evidence adapter for the forge in `git remote`; feedback loop as seeded; scope ceiling `harness + runnable foundation`.
+6. **Plain defaults.** Reading map; legibility (existing repo: from the code; greenfield: the open questions); review budgets as shipped in `docs/harness/workflows/review.md`; merge path as in `AGENTS.md`, with the evidence adapter for the forge in `git remote`; feedback loop as seeded, with the implementer capturing learning at handoff and a named integrator checking missing results after merge/local closure; scope ceiling `harness + runnable foundation`.
 
 ## Step 4 — The decision sheet (one message)
 
@@ -67,7 +67,7 @@ Ask once: correct any line; anything not struck stands. Apply the corrections. A
 - `AGENTS.md`: what it is, stack, architecture (or delete the section), reading map, conventions grounded in code (including the development-model rules that hold now or that the foundation creates), domain gates, commands (each executed), verification.
 - `docs/harness/risk-profile.md`: posture, exposures, baselines, evidence, unknowns.
 - `verify`: wired, run to pass, then a deliberately broken test makes it fail; restore.
-- `docs/harness/legibility.md` and the forge adapter from `docs/harness/merge-evidence.md`.
+- `docs/harness/legibility.md` and the forge adapter from `docs/harness/merge-evidence.md`, including the learning result. Name the integrator and result location in `AGENTS.md`; record any external orchestrator wiring still needed as an owned follow-up. A repo instruction is not evidence that its orchestrator runs it.
 - Runnable foundation, if the ceiling includes it: only what makes `verify` meaningful and lays down the module boundaries. No product behavior.
 - Greenfield, or the stack or development model changed: a decision record `docs/plans/<today>-foundation.md`.
 

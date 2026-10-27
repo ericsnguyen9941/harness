@@ -45,6 +45,7 @@ const EXPECTED_FILES = [
   "docs/harness/workflows/feature.md",
   "docs/harness/workflows/pillar.md",
   "docs/harness/workflows/review.md",
+  "docs/harness/workflows/learn.md",
   "docs/harness/workflows/probe.md",
   "docs/harness/workflows/upgrade.md",
   "docs/harness/legibility.md",
@@ -54,12 +55,14 @@ const EXPECTED_FILES = [
   ".claude/commands/feature.md",
   ".claude/commands/harness-pillar.md",
   ".claude/commands/harness-review.md",
+  ".claude/commands/harness-learn.md",
   ".claude/commands/harness-probe.md",
   ".claude/commands/harness-upgrade.md",
   ".agents/skills/harness-light-onboard/SKILL.md",
   ".agents/skills/feature/SKILL.md",
   ".agents/skills/harness-pillar/SKILL.md",
   ".agents/skills/harness-review/SKILL.md",
+  ".agents/skills/harness-learn/SKILL.md",
   ".agents/skills/harness-probe/SKILL.md",
   ".agents/skills/harness-upgrade/SKILL.md",
 ];
@@ -83,6 +86,49 @@ describe("runInit", () => {
     );
     expect(report.skipped).toEqual([]);
     expect(report.previousKitVersion).toBeNull();
+  });
+
+  test("upgrade delivers task learning without replacing adapted instructions or friction history", () => {
+    const dir = scratch();
+    const adapted = {
+      "AGENTS.md": "# Project manual\nKeep our own gates and commands.\n",
+      "docs/harness/merge-evidence.md":
+        "# Existing handoff\nKeep our evidence fields.\n",
+      "docs/harness/friction.md":
+        "# Friction\n## Earlier task\nFriction: slow lookup\nChange: none yet\nPrediction: fewer repeated reads\nOutcome: open\n",
+    };
+    mkdirSync(join(dir, "docs/harness"), { recursive: true });
+    for (const [file, content] of Object.entries(adapted)) {
+      writeFileSync(join(dir, file), content);
+    }
+    writeFileSync(join(dir, "docs/harness/kit-version"), "0.9.0\n");
+
+    const report = runInit(dir);
+
+    expect(report.previousKitVersion).toBe("0.9.0");
+    for (const [file, content] of Object.entries(adapted)) {
+      expect(readFileSync(join(dir, file), "utf8")).toBe(content);
+      expect(report.references).toContain(`${file}.harness-kit`);
+      expect(readFileSync(join(dir, `${file}.harness-kit`), "utf8")).toBe(
+        readFileSync(join(import.meta.dir, "template", file), "utf8"),
+      );
+    }
+    for (const file of [
+      "docs/harness/workflows/learn.md",
+      ".claude/commands/harness-learn.md",
+      ".agents/skills/harness-learn/SKILL.md",
+    ]) {
+      expect(report.created).toContain(file);
+      expect(readFileSync(join(dir, file), "utf8")).toBe(
+        readFileSync(join(import.meta.dir, "template", file), "utf8"),
+      );
+    }
+    const again = runInit(dir);
+    expect(again.created).toEqual([]);
+    expect(again.references).toEqual([]);
+    expect(readFileSync(join(dir, "docs/harness/friction.md"), "utf8")).toBe(
+      adapted["docs/harness/friction.md"],
+    );
   });
 
   test("re-run is idempotent: nothing created, everything skipped", () => {

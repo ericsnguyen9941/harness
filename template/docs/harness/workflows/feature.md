@@ -55,4 +55,6 @@ Run `AGENTS.md`'s Verification list in order, plus the feature doc's "How to ver
 
 ## Step 7 — Merge with evidence
 
+Run `docs/harness/workflows/learn.md` before handoff; include the learning result in the evidence block. The integrator checks for a missing result after merge.
+
 Every merge carries its evidence: the verification output and the three self-check answers from `AGENTS.md` — did this change make any doc stale (fix it here); did I hit harness friction (log it in `docs/harness/friction.md`); what did I not attempt (say so).

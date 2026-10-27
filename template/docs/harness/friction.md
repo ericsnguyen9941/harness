@@ -5,6 +5,7 @@ Append an entry when the harness itself fails you: a missing rule, a stale or mi
 
 Protocol:
 
+- Identify the source task/PR, revision and evidence pointer in `Friction`. Use `docs/harness/workflows/learn.md` at task handoff and for missing merge/closure results; a repeated notification reuses the same task/theme entry.
 - One entry per friction event, newest at the bottom; live entries are append-only — later sessions edit only `Change` (when acting on the entry) and `Outcome` (when closing it).
 - A closed entry is archived by `/harness-review` once its learning lives in a rule (or one review cycle after it closed): it collapses to one line under `## Archive` below, and the full text lives on in git history. The human confirms the archive list; nothing auto-archives.
 - Live log budget: ~120 lines (adjust at onboarding). Crossing it is the signal to run `/harness-review`, not to write shorter friction.
@@ -21,7 +22,7 @@ Format:
 
 ```markdown
 ## YYYY-MM-DD — short title
-Friction: what was hard.
+Friction: what was hard; source task/PR, revision and evidence pointer.
 Change: harness change made in response, or "none yet".
 Prediction: measurable expected behavior change.
 Outcome: open | YYYY-MM-DD — what was observed.

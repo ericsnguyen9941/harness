@@ -31,7 +31,7 @@ Stop and confirm with the human before:
 ## Verification (definition of done)
 
 Run and pass, in order: `bun run typecheck`, `bun run lint`, `bun test`, `bun run harness-check`.
-Then answer in your report: did this change make any doc or template stale (fix in the same change); did I hit harness friction (log in [`docs/harness/friction.md`](./docs/harness/friction.md)); what did I not attempt (say so).
+Before handoff, follow `template/docs/harness/workflows/learn.md` using this kit's `docs/harness/friction.md` as the log and the PR body as the result location; the PR integrator owns missing-result catch-up after merge. Then answer in your report: did this change make any doc or template stale (fix in the same change); did I hit harness friction (log in [`docs/harness/friction.md`](./docs/harness/friction.md)); what did I not attempt (say so).
 
 ## Working notes
 

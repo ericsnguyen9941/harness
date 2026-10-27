@@ -22,7 +22,12 @@
 - Doc made stale? <none | fixed: path>
 - Harness friction? <none | logged: friction.md entry title>
 - Not attempted: <say so>
+
+**Learning** — <none | captured | follow-up> — <task/PR and revision>
+<up to three finding → destination / owner / next-check lines, or omit when none>
 ```
+
+Fill the learning result through `docs/harness/workflows/learn.md`. The implementer records it before handoff; the integrator catches up only if it is missing or new evidence arrived. Its presence records the check, not proof that a proposed harness change worked.
 
 ## Wiring it (per forge — optional, pick one)
 
